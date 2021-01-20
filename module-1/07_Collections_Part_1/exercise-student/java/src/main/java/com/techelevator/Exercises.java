@@ -16,7 +16,11 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+	List<String> listFromArray = new ArrayList<>();
+	for (String i : stringArray ) {
+		listFromArray.add(i);
+	}
+		return listFromArray;
 	}
 
 	/*
@@ -26,7 +30,15 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+		String[] arrayFromList = new String[stringList.size()];
+		int n = 0;
+		for (String i : arrayFromList) {
+
+			arrayFromList[n] = stringList.get(n);
+			n++;
+		}
+
+		return arrayFromList;
 	}
 
 	/*
@@ -35,9 +47,17 @@ public class Exercises {
 	 no4LetterWords( {"Train", "Boat", "Car"} )  ->  ["Train", "Car"]
 	 no4LetterWords( {"Red", "White", "Blue"} )  ->  ["Red", "White"]
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
-	 */
+	 */;
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		List<String> noFoursList = new ArrayList<>();
+		int i = 0;
+		for (String val : stringArray ) {
+			if (stringArray[i].length() != 4) {
+				noFoursList.add(stringArray[i]);
+			}
+			i++;
+		}
+		return noFoursList;
 	}
 
 	/*
@@ -47,7 +67,20 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		List<Double> listOfHalvedDoubles = new ArrayList<>();
+
+		for (int i : intArray) {
+			double holderDouble;
+			holderDouble = i;
+			holderDouble = holderDouble / 2;
+
+			listOfHalvedDoubles.add(holderDouble);
+			i++;
+
+		}
+
+
+		return listOfHalvedDoubles;
 	}
 
 	/*
@@ -57,7 +90,13 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 64362
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		int largest = 0;
+		for (int i : integerList) {
+			if (i > largest) {
+				largest = i;
+			}
+		}
+		return largest;
 	}
 
 	/*
@@ -67,7 +106,13 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> oddList = new ArrayList<>();
+		for (int i : integerArray) {
+			if (i % 2 == 1) {
+				oddList.add(i);
+			}
+		}
+		return oddList;
 	}
 
 	/*
@@ -78,6 +123,9 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+		if (integerList.lastIndexOf(intToFind) != integerList.indexOf(intToFind)) {
+			return true;
+		}
 		return false;
 	}
 
@@ -95,8 +143,32 @@ public class Exercises {
 	 equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
-	}
+		List<String> fizzBuzzList = new ArrayList<>();
+
+		int numberOfLoops = 0;
+		for (Integer i : integerArray) {
+			boolean isDivisibleByThree = false;
+			boolean isDivisibleByFive = false;
+			if (i % 3 == 0) {
+				isDivisibleByThree = true;
+			}
+			if (i % 5 == 0) {
+				isDivisibleByFive = true;
+			}
+			if (isDivisibleByFive && isDivisibleByThree) {
+				fizzBuzzList.add(numberOfLoops, "FizzBuzz");
+			} else if (isDivisibleByFive) {
+				fizzBuzzList.add(numberOfLoops, "Buzz");
+			} else if (isDivisibleByThree) {
+				fizzBuzzList.add(numberOfLoops, "Fizz");
+			} else {
+				fizzBuzzList.add(numberOfLoops, i.toString());
+			}
+			numberOfLoops ++;
+			}
+		return fizzBuzzList;
+
+		}
 
 	/*
 	 Given two lists of Integers, interleave them beginning with the first element in the first list followed
@@ -106,7 +178,21 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> interWovenList = new ArrayList<>();
+		List<Integer> copyOfListOne = new ArrayList<>(listOne);
+
+		int indexToAppend = 1;
+		for (Integer i : listTwo) {
+			if (indexToAppend <= copyOfListOne.size()) {
+				copyOfListOne.add(indexToAppend, i);
+				indexToAppend += 2;
+			} else {
+				copyOfListOne.add(i);
+			}
+		}
+
+
+		return copyOfListOne;
 	}
 
 }
