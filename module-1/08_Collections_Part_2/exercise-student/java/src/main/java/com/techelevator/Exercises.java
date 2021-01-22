@@ -148,6 +148,7 @@ public class Exercises {
             peterPaul.put("Peter", peterInt);
             peterPaul.put("Paul", paulInt);
             peterPaul.put("PeterPaulPartnership", partnershipInt);
+
         }
         return peterPaul;
     }
@@ -323,3 +324,5 @@ public class Exercises {
     }
 
 }
+
+
