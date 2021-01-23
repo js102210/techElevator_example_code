@@ -30,7 +30,7 @@ public class Employee {
 
 
     public void setLastName(String lastName) {
-        lastName = this.lastName;
+       this.lastName = lastName;
     }
     public void setDepartment(String department) {
         department = this.department;
