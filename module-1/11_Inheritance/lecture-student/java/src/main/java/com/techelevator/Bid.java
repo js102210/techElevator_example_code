@@ -1,13 +1,15 @@
 package com.techelevator;
 
+import java.math.BigDecimal;
+
 public class Bid {
 
 	private final String bidder;
-	private final int bidAmount;
+	private final BigDecimal bidAmount;
 
-	public Bid(String bidder, int bidAmount) {
+	public Bid(String bidder, long bidAmount) {
 		this.bidder = bidder;
-		this.bidAmount = bidAmount;
+		this.bidAmount = BigDecimal.valueOf(bidAmount);
 	}
 
 	public String getBidder() {
@@ -15,6 +17,6 @@ public class Bid {
 	}
 
 	public int getBidAmount() {
-		return bidAmount;
+		return bidAmount.intValue();
 	}
 }
