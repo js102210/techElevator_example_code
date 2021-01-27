@@ -1,28 +1,38 @@
 package com.techelevator.farm;
 
-import java.math.BigDecimal;
 
-public class FarmAnimal implements Singable, Sellable {
+public abstract class FarmAnimal implements Singable{
 	private final String name;
+	private String nickName;
 
 	public FarmAnimal(String name) {
 		this.name = name;
 	}
 
-	public String getName() {
+	public final String getName() {
+		if (nickName != null){
+			return name + " called " + nickName;
+		}
 		return name;
+
 	}
 
-	public String makeSound() {
-		return null;
-	}
+	public abstract String makeSound();
 
 	public String getArticle() {
 		return "a";
 	}
 
-	public BigDecimal getPrice() {
-		return null;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
+	public String getNickName() {
+		return this.nickName;
+	}
+
+	@Override
+	public String toString() {
+		return this.getArticle() + " " + this.name;
+	}
 }

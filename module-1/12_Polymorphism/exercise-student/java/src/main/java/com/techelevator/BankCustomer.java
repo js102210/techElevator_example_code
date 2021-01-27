@@ -25,9 +25,10 @@ public class BankCustomer {
     }
 
     public Accountable[] getAccounts() {
+        //Accountable[] accountArray = new Accountable[accounts.size()];
+   // accountArray = accounts.toArray(accountArray);
+        Accountable [] accountArray = accounts.toArray(new Accountable[accounts.size()]);
 
-       Accountable[] accountArray = new Accountable[accounts.size()];
-       accountArray = accounts.toArray(accountArray);
 
         return accountArray;
     }
@@ -68,7 +69,7 @@ public class BankCustomer {
         }
         if (combinedBalance >= 25000) {
             return true;
-        } else{
+        } else {
             return false;
         }
 

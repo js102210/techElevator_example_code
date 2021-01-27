@@ -25,7 +25,7 @@ class PaintCalculator {
 
             if (userChoice.equals("1")) {
                 // Step One:
-                // Wall newWall = null;
+                 Wall newWall = null;
 
                 System.out.println("What's the name of the new wall?");
                 String name = userInput.nextLine();

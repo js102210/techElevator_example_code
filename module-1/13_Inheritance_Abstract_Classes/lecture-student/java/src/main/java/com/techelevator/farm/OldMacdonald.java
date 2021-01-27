@@ -10,9 +10,10 @@ public class OldMacdonald {
 		Cow daisy = new Cow();
 		Chicken nugget = new Chicken();
 		Alpaca peru = new Alpaca();
-		Singable[] singables = new Singable[] { daisy, nugget, peru, new Tractor() };
+		Duck firstDuck = new Duck();
+		Singable[] singables = new Singable[] { daisy, nugget, peru, new Tractor(), firstDuck };
 
-		for (Singable singableThing : singables) {
+		/*for (Singable singableThing : singables) {
 			String name = singableThing.getName();
 			String sound = singableThing.makeSound();
 			System.out.println("Old MacDonald had a farm, ee, ay, ee, ay, oh!");
@@ -29,7 +30,9 @@ public class OldMacdonald {
 			System.out.println("And you can buy that " + product.getName() + " for only $" + product.getPrice());
 			total = total.add(product.getPrice());
 		}
-		System.out.println("Or buy the whole farm for $" + total);
+		System.out.println("Or buy the whole farm for $" + total); */
+
+		System.out.println(daisy);
 
 
 

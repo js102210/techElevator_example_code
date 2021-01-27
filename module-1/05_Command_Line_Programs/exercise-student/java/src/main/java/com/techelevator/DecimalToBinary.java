@@ -11,12 +11,12 @@ public class DecimalToBinary {
 		String numbers = input.nextLine();
 		String[] numbersArray = numbers.split(" ");
 
-	/*	for (int i = 0; i < numbersArray.length; i++) {
+		/*for (int i = 0; i < numbersArray.length; i++) {
 		Integer numberStringInt = Integer.parseInt(numbersArray[i]);
 		System.out.println(numbersArray[i] + " in binary is " + Integer.toBinaryString(numberStringInt));
-		}*/
+		} */
 
-		for (int i = 0; i < numbersArray.length; i++) {
+		/*for (int i = 0; i < numbersArray.length; i++) {
 			int inputNum = Integer.parseInt(numbersArray[i]);
 			System.out.print(inputNum + " in binary is ");
 
@@ -32,7 +32,28 @@ public class DecimalToBinary {
 			}
 			System.out.print(" \n");
 
+		}*/
+
+		for (int i = 0; i < numbersArray.length; i++){
+			int index = 0;
+			int[] binaryArr = new int[40];
+			int inputNum = Integer.parseInt(numbersArray[i]);
+			System.out.print(inputNum + " in binary is ");
+			while (inputNum > 0) {
+				binaryArr[index] = inputNum % 2;
+				inputNum = inputNum / 2;
+				index++;
+			}
+
+			for (int x = index -1; x >= 0; x--){
+
+				System.out.print(binaryArr[x]);
+			}
+			System.out.print("\n");
+
+
 		}
+
 
 	}
 }
