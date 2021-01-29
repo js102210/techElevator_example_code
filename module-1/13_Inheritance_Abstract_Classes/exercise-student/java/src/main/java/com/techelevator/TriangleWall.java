@@ -18,7 +18,7 @@ private int height;
         this.height = height;
     }
 
-    public int getArea() {
+  public int getArea() {
         int area;
         area = (this.base * this.height) / 2;
         return area;

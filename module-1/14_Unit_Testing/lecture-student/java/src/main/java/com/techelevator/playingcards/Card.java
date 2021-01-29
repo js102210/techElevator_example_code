@@ -62,6 +62,10 @@ public class Card {
         return cardValues.get(rank);
     }
 
+    public double getHalfVal() {
+        return getValueForRank(this.rank) / 2.0;
+    }
+
     public int getValue() {
         return getValueForRank(this.rank);
     }
