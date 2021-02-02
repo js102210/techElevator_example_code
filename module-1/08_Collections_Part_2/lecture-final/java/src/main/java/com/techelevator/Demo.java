@@ -38,6 +38,12 @@ public class Demo {
 
         System.out.println(studentClass);
 
+     List<String> stringList = new ArrayList<String>();
+     stringList.add("yes");
+     stringList.add("no");
+     stringList.add("maybe");
+
+     System.out.print(stringList);
 
 
 
