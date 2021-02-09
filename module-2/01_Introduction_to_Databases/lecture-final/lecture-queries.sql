@@ -121,3 +121,9 @@ WHERE indepyear IS NULL
 --how many different districts are in my stuff
 SELECT DISTINCT district 
 FROM city;
+
+
+
+note create glitch acct
+
+need to compile JAR in java 8 (for glitch)

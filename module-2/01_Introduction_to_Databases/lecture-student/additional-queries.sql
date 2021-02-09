@@ -1,8 +1,17 @@
 -- The name and population of all cities in the USA with a population of greater than 1 million people
+SELECT name, population, countrycode
+FROM city
+WHERE population > 1000000 AND countrycode ILIKE 'USA';
 
 -- The name and population of all cities in China with a population of greater than 1 million people
+SELECT name, population, countrycode
+FROM city
+WHERE population> 1000000 AND countrycode ILIKE 'Chn';
 
 -- The name and region of all countries in North or South America
+SELECT name, region
+FROM country
+WHERE region IN('North America', 'South America')
   
 -- The name, continent, and head of state of all countries whose form of government is a monarchy
 
