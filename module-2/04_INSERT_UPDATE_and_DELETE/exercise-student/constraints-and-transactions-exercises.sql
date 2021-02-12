@@ -88,9 +88,11 @@ WHERE category.name = 'Mathmagical';
 
 BEGIN TRANSACTION;
 
-INSERT INTO inventory (film_id, store_id)
-VALUES (1001, 1),(1001,2);
-
+--INSERT INTO inventory (film_id, store_id)
+--VALUES (1001, 1),(1001,2);
+INSERT INTO inventory(film_id, store_id)
+SELECT 1001, store_id
+FROM store;
 
 ROLLBACK;
 
