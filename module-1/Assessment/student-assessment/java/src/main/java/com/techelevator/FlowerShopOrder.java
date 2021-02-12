@@ -51,7 +51,7 @@ public class FlowerShopOrder {
     }
 
 
-    public BigDecimal calculateShipping(boolean sameDay, String zipCode) {
+    public static BigDecimal calculateShipping(boolean sameDay, String zipCode) {
         int zipInt = Integer.parseInt(zipCode);
         BigDecimal zipCost;
         BigDecimal costForSameDay;
