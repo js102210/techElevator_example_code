@@ -15,23 +15,26 @@ public class HotelService {
     }
 
     public Hotel[] listHotels() {
-        return null;
+        //call the api to get the list of hotels, getForObject(path/api call, what I want back)
+        return restTemplate.getForObject(API_BASE_URL +"hotels", Hotel[].class);
     }
 
     public Review[] listReviews() {
-        return null;
+        return restTemplate.getForObject(API_BASE_URL +"reviews", Review[].class);
     }
 
     public Hotel getHotelById(int id) {
-        return null;
+        return restTemplate.getForObject(API_BASE_URL +"hotels/" + id, Hotel.class);
     }
 
     public Review[] getReviewsByHotelId(int hotelID) {
-        return null;
+
+        return restTemplate.getForObject(API_BASE_URL +"hotels/" + hotelID + "/reviews", Review[].class);
     }
 
     public Hotel[] getHotelsByStarRating(int stars) {
-        return null;
+        //http://localhost:3000/hotels?stars=3
+        return restTemplate.getForObject(API_BASE_URL +"hotels?stars=" + stars, Hotel[].class);
     }
 
     public City getWithCustomQuery(){
