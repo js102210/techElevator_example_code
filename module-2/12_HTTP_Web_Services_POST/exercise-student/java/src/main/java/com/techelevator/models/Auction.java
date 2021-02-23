@@ -68,4 +68,9 @@ public class Auction {
         return "Auction{" + "id=" + id + ", title='" + title + '\'' + ", description='" + description + '\''
                 + ", user='" + user + '\'' + ", currentBid=" + currentBid + '}';
     }
+
+/*   @Override
+    public boolean equals(Object obj) {
+        return (obj.toString().equals(this.toString()));
+    } */
 }
