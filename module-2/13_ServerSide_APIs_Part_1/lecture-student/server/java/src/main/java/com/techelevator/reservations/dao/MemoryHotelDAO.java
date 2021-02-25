@@ -5,6 +5,7 @@ import com.techelevator.reservations.models.Hotel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MemoryHotelDAO implements HotelDAO {
 
@@ -31,6 +32,8 @@ public class MemoryHotelDAO implements HotelDAO {
         }
         return null;
     }
+
+
 
     @Override
     public List<Hotel> list() {
@@ -80,4 +83,30 @@ public class MemoryHotelDAO implements HotelDAO {
                 4,
                 75,185));
     }
+
+    @Override
+    public List<Hotel> filterByState(String state) {
+        List<Hotel> filteredList = new ArrayList<>();
+        //loop through existing hotels and add to filtered list
+        for (Hotel h : hotels){
+            if (h.getAddress().getState().toLowerCase(Locale.ROOT).equals(state.toLowerCase(Locale.ROOT))){
+                filteredList.add(h);
+            }
+        }
+       return filteredList;
+    }
+
+    @Override
+    public List<Hotel> filterByCity(String city) {
+        List<Hotel> filteredList = new ArrayList<>();
+        //loop through existing hotels and add to filtered list
+        for (Hotel h : hotels){
+            if (h.getAddress().getCity().toLowerCase(Locale.ROOT).equals(city.toLowerCase(Locale.ROOT))){
+                filteredList.add(h);
+            }
+        }
+        return filteredList;
+    }
+
+
 }
