@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component // global rule-- any time any constructor anywhere needs this kind of object, pass this one in
 public class MemoryHotelDAO implements HotelDAO {
 
     private List<Hotel> hotels = new ArrayList<>();
