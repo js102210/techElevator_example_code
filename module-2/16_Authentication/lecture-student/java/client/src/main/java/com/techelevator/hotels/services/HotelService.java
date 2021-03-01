@@ -35,8 +35,14 @@ public class HotelService {
       throw new HotelServiceException(INVALID_RESERVATION_MSG);
     }
 
-    // TODO: Fix Me
-    throw new HotelServiceException("NOT IMPLEMENTED");
+    // send POST that includes reservation body and the token in header
+    try {
+      reservation = restTemplate.postForObject(BASE_URL + "hotels/" + reservation.getHotelID() + "/reservations",
+              makeReservationEntity(reservation), Reservation.class);
+    } catch (RestClientResponseException ex) {
+      throw new HotelServiceException(ex.getRawStatusCode() + " : " + ex.getResponseBodyAsString());
+    }
+    return reservation;
   }
 
   /**
