@@ -15,3 +15,124 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+/*aside styling*/
+aside {
+  /*make the element fix itself on the screen during scrolling*/
+  position: fixed;
+  /*define width and set border*/
+  width: 200px;
+  border-right: 1px solid rgba(0, 173, 238, 0.4);
+  /*make it so the border extends vertically along the entire viewpport*/
+  height: 100vh;
+  /*add spacing*/
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+aside img {
+  height: 120px;
+  /*centers the image in its element*/
+  display: block;
+  margin: 0 auto;
+}
+
+aside li {
+/*remove bullet formatting*/
+list-style: none;
+text-align: center;
+text-transform: uppercase;
+
+/*create an underline for each entry in the list */
+border-bottom: 1px solid rgba(0, 173, 238, 0.4) ;
+
+/*shorthand to set top and bottom to 10px and leave left/right margins on auto(centered). This creates vertical space between each list entry*/
+margin: 10px auto;
+/*use padding to create space between text and border, same amount as the distance between list items, effectively vertically centering the text*/
+padding-bottom: 10px;
+/*makes it so that the blue lines don't take up the whole element*/
+width: 80%;
+/*create extra space between links and lines, in theory couldn't this have been done with padding?*/
+line-height: 2;
+}
+
+aside li a {
+  font-weight: bold;
+  color: #00ADEE ;
+  text-decoration: none;
+}
+
+aside li a:hover {
+  /*make is so the links appear underlined when highlighted*/
+  text-decoration: underline;
+}
+
+/*header styling*/
+
+header {
+  height: 120px;
+}
+
+header img {
+  height: 80%;
+}
+
+
+/*banner styling*/
+img.banner{
+  /*make banner image not exceed the edge of the view*/
+  display: block;
+  width: 100%;
+}
+
+/*main styling*/
+
+main {
+  /*aside is 200px, so this pushes the main block to the right so it doesn't overlap, without this the main text flows under the bar and is cut off on the left*/
+  margin-left: 200px;
+
+/*create space between main block and side bar, without this there is no space between the bar and the start of the text in main*/
+padding-left: 20px;
+padding-right: 20px;
+
+}
+
+/*section styling*/
+  section div {
+    /*make each block display side by side and take up a third of the section element*/
+    display: inline-block;
+    width: 33%;
+    /*give the sections some space from each other*/
+    padding-right: 20px;
+    margin-top: 20px;
+  }
+
+  section h2 {
+    color: #8CC36F;
+  }
+
+  section h2 i {
+    /*give the image in the section heading some space from the text
+    note, icos referenced in i tags are defined in fontawesome.com */
+    margin-right: 10px;
+  }
+
+  /*add green borders after first two divs*/
+  /*#what-we-do,#our-work*/
+  /*div :not(section:last-child)*/
+  
+  section :not(:last-child){
+    border-right:solid 1px rgba(170, 239, 135, 0.8);
+  }
+
+  /*put some space between second two divs and previously created green borders*/
+  /*#our-work,#contact-us*/
+  
+ /* div :not(section:first-child)*/
+  
+  section :not(:first-child){
+    padding-left: 20px;
+  }
+
+
+

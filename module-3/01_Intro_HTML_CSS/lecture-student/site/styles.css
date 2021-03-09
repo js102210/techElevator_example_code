@@ -1,0 +1,21 @@
+img {
+    height: 200px;
+}
+
+body{
+    font-family:cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(223, 169, 98);
+}
+
+h1{
+    font-size: 50px;
+    color: blanchedalmond;
+}
+
+h2{
+    color :#4695b4;
+}
+
+header {
+    font-size: 200px;
+}

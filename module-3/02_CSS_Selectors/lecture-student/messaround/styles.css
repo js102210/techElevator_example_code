@@ -1,0 +1,19 @@
+#themenuheader {
+    border: 2px solid blueviolet;
+}
+
+.lunchsection p {
+    border: solid 2px crimson;
+}
+
+div p{
+    border: 5px solid blue;
+    margin: 20px;
+    padding: 30px;
+}
+
+h3 {
+    display: block;
+    width: 100px;
+    text-align: center;
+}
