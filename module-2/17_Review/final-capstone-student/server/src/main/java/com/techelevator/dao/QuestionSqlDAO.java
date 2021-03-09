@@ -56,7 +56,7 @@ public class QuestionSqlDAO implements  QuestionDAO{
 
     @Override
     public boolean deleteQuestion(int id) {
-        String sql = "delete from question  where question_id = ?";
+        String sql = "delete from questions  where question_id = ?";
         int count = jdbcTemplate.update(sql,id);
         return count==1; //we should update exactly one
     }
@@ -67,5 +67,28 @@ public class QuestionSqlDAO implements  QuestionDAO{
         q.setId(results.getLong("question_id"));
         q.setQuestion(results.getString("question"));
         return q;
+    }
+
+    @Override
+    public Question createQuestion(Question question) {
+        String sql = "INSERT INTO questions(title,question) VALUES(?,?) RETURNING question_id;";
+        long id = jdbcTemplate.queryForObject(sql, Long.class, question.getTitle(), question.getQuestion());
+        question.setId(id);
+        return question;
+    }
+
+    @Override
+    public List<Question> filter(String title, String question) {
+        List<Question> list = new ArrayList<>();
+        String sql = "select title, question_id, question from questions WHERE ";
+        title = "%"+title+"%";
+        question = "%"+question+"%";
+       SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title, question);
+        while (results.next()){
+            Question q = mapRowToQuestion(results);
+            list.add(q);
+        }
+        return list;
+
     }
 }

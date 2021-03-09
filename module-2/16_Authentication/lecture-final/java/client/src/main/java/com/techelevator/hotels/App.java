@@ -54,7 +54,7 @@ public class App {
                         ResponseEntity<Map> response = authenticationService.login(credentials);
                         if (response.hasBody()) {
                             String token = (String) response.getBody().get("token");
-                            hotelService.AUTH_TOKEN = token;
+                            HotelService.AUTH_TOKEN = token;
                             System.out.println("Login Successful");
                         }
                     } else {

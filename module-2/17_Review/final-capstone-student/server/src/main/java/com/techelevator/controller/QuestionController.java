@@ -3,10 +3,12 @@ package com.techelevator.controller;
 import com.techelevator.dao.QuestionDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.model.Question;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,6 +28,7 @@ public class QuestionController {
 
     @RequestMapping(path="question/list",method = RequestMethod.GET)
     public List<Question> getAllQuestions (Principal p){
+        System.out.println(p.getName() + " requested all questions.");
         return questionDAO.getAllQuestions();
     }
     @RequestMapping(path="question/{id}",method = RequestMethod.PUT)
@@ -42,5 +45,17 @@ public class QuestionController {
             System.out.println(p.getName()+" succussfully deleted "+id);//just print to console on server, not telling client
         else
             System.out.println("There was an issue deleting question "+id);
+    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "question", method = RequestMethod.POST)
+    public Question addQuestion(@RequestBody Question question){
+        return questionDAO.createQuestion(question);
+    }
+
+    @RequestMapping(path = "question/filter", method = RequestMethod.GET)
+    public List<Question> getFilteredQuestionList(@RequestParam(required = false) String title, @RequestParam(required = false) String question){
+        List<Question> results = new ArrayList<>();
+        results = questionDAO.filter(title, question);
+        return results;
     }
 }

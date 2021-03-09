@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter the Cycle</title>
+    <link rel="stylesheet" href="fanstyles.css"/>
+</head>
+
+<body>
+<header>
+    <h1>Avatar fan site register as a bender</h1>
+    <a href="fanpage.html">Back to main</a>
+</header>
+    
+<main>
+<h2>Reservation Form</h2>
+<form method="POST" action="/api/avatarcycle">
+<div>
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" required/>
+</div>
+
+<div>
+    <label for="email">Email: </label>
+    <input type="email" id="email" name="email" required/>
+</div>
+
+<div>
+    <label for="DOB">DOB: </label>
+    <input type="date" id="DOB" name="name"/>
+</div>
+
+<div>
+    <label for="favcolor">Favorite Color: </label>
+    <input type="color" id="favcolor" name="favcolor"/>
+</div>
+
+<div>
+    <label for="favnumber">Favorite Number: </label>
+    <input type="number" id="favnumber" name="favnumber"/>
+</div>
+
+<div>
+    <p>What type of bender are you? </p>
+    <label for="air">Air</label>
+    <input type="radio" id="air" name="typeofbender" required/>
+    <label for="water">Water</label>
+    <input type="radio" id="water" name="typeofbender"required/>
+    <label for="fire">Fire</label>
+    <input type="radio" id="fire" name="typeofbender"required/>
+    <label for="earth">Earth</label>
+    <input type="radio" id="earth" name="typeofbender"required/>
+</div>
+
+<div>
+    <label for="confirmation">Is the above correct?</label>
+    <input type="checkbox" id="confirmation" name="confirmation"/>
+
+</div>
+
+<div>
+    <label for="submit">Enter the cycle</label>
+    <input type="submit" id="submit" name="submit"/>
+</div>
+
+
+
+</form>
+</main>
+</body>
+</html>
