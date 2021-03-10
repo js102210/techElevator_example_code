@@ -1,0 +1,30 @@
+div.container {
+   display: grid;
+   grid-template-columns: 200px 1fr 200px; 
+   grid-template-areas: 
+   "header header header"
+   "nav menu links"
+   "footer footer footer";
+   height: 100vh;
+   gap: 10px;
+}
+
+div.container header {
+    grid-area: header;
+}
+
+#menu-nav {
+    grid-area: nav;
+}
+
+div.container main{
+    grid-area: menu;
+}
+
+#upcoming-events{
+    grid-area: links;
+}
+
+div.container footer{
+    grid-area: footer;
+}
