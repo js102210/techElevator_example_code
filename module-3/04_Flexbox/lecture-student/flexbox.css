@@ -1,0 +1,57 @@
+/* start by creating flexboxes*/
+body,
+#all-items section {
+    display: flex;
+    flex-direction: column;
+}
+
+#hero footer,
+#featured section,
+#featured section article div,
+#all-items section article{
+    display: flex;
+
+}
+
+body{
+    align-items: center;
+}
+
+
+#featured section article div{
+    justify-content: center;
+}
+
+
+#all-items section article{
+    justify-content: center;
+}
+
+/*can either style them separately or comma-separate them to select multiple*/
+#hero footer, #all-items section article{
+    align-items: center;
+}
+
+/*span question*/
+#hero footer {
+    justify-content: space-between;
+}
+
+#all-items article div:last-child{
+    flex-basis: 80%;
+}
+
+/*selects every other child and has it 'align right'*/
+#all-items article:nth-child(even){
+    flex-direction: row-reverse;
+}
+
+
+@media screen and (max-width: 1024px){
+    #featured section{
+        flex-direction: column;
+    }
+    #featured section article:nth-child(even){
+        border: none;
+    }
+}

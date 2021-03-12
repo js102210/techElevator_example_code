@@ -28,3 +28,15 @@ div.container main{
 div.container footer{
     grid-area: footer;
 }
+
+@media screen and (max-width: 768px){
+    div.container{
+        grid-template-areas: 
+        "header"
+        "nav"
+        "menu"
+        "links"
+        "footer";
+        grid-template-columns: 1fr;
+    }
+}

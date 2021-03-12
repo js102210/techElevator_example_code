@@ -121,6 +121,7 @@ padding-right: 20px;
   /*#what-we-do,#our-work*/
   /*div :not(section:last-child)*/
   
+  /*not selectors select each child of the section other than the one specified. in this case they are divs*/
   section :not(:last-child){
     border-right:solid 1px rgba(170, 239, 135, 0.8);
   }

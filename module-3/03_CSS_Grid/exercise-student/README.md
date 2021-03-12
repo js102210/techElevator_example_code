@@ -50,7 +50,7 @@ Now your page should look like the "Layout 1 - Desktop" image.
 
 ## Step Three: Create the tablet layout
 
-After the rules that you set up in steps one and two, create a media query with a `max-width` of 1024px. In this media query, add selectors for `main-grid` and `experience-grid`.
+After the rules that you set up in steps one and two, create a media query with a `max-width` of 1024px. In thaxis media query, add selectors for `main-grid` and `experience-grid`.
 
 For `main-grid`, set the column gap to 35px, and change the columns to two evenly sized columns. Redefine `grid-template-areas` to match the "Layout 2 - Tablet" image.
 
