@@ -54,7 +54,7 @@ argument is unused.
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
 
-
+/*
 function titleCase(str, list){
     resultString = str.split(' ');
     realResultString = "";
@@ -63,7 +63,6 @@ function titleCase(str, list){
     if (list != undefined){
         list = list.toLowerCase();
         exceptions = list.split(' ');
-
     }
 
     for (word of resultString){
@@ -100,8 +99,34 @@ for (word of realResultString){
 
 realRealResultString = realRealResultString.trim();
 return realRealResultString;
+} */
+
+function titleCase (str, list){
+    str = str.toLowerCase();
+    resultArr = str.split(' ');
+    if (list != undefined){
+        list = list.toLowerCase();
+        exceptions = list.split(' ');
+    }
+    resultArr[0] = casing(resultArr[0]);
+    for (let i = 1; i < resultArr.length; i++){
+        if (!exceptions.includes(resultArr[i])){
+            resultArr[i] = casing(resultArr[i]);
+        } else {
+            resultArr[i] = resultArr[i].toLowerCase();
+        }
+    }
+  return resultArr.join(' ');
+}
+function casing (str){
+    str = str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+    return str;
 }
 
+
+
+
+/*
 //the better way that I didn't actually come up with
 function titleCase(str, exceptions) {
     let titleWords = str.split( ' ' );
@@ -123,4 +148,4 @@ function wordIsArticle(w, a) {
         }
     }
     return false;
-}
+} */
