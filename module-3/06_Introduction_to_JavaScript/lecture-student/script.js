@@ -10,8 +10,16 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const daysInWeek= 7;
+  console.log('Number of days in week: '+daysInWeek)
   // Declares a variable those value can be changed
+  let daysInMonth = 31;
+  console.log(`Number of days this month ${daysInMonth}`);
+
   // Declares a variable that will always be an array
+  let daysOfTheWeek = ['Monday','Tuesday','Wednesday'];
+  console.table(daysOfTheWeek);
+
 }
 
 /**
@@ -65,19 +73,25 @@ function objects() {
     firstName: "Bill",
     lastName: "Lumbergh",
     age: 42,
+    
     employees: [
       "Peter Gibbons",
       "Milton Waddams",
       "Samir Nagheenanajar",
       "Michael Bolton"
-    ]
+    ],
+   /* function : toString(){
+      return `${this.lastName},${this.firstName} (${this.age})`;
+    } */
   };
 
   // Log the object
-
+console.log(person);
   // Log the first and last name
-
+  
   // Log each employee
+  console.log(person);
+  console.table(person);
 }
 
 /*
@@ -138,4 +152,49 @@ function stringFunctions(value) {
         - trim()
         - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
     */
+}
+
+
+function returnString(x){
+  if (x < 10)
+{
+  return 'yo';
+} else {
+  return false;
+}
+}
+
+
+//arrays
+function testArray() {
+  const myArray = [1,2,3];
+  console.log(myArray);
+  console.table(myArray);
+
+  console.log('push 8')
+  myArray.push(8);
+  console.table(myArray);
+
+  console.log('popping');
+  console.log(myArray.pop());
+  console.log('after pop');
+  console.table(myArray);
+  //concat combines arrays
+  const array2=['one','two'];
+  const arrayConcat = myArray.concat(array2);
+  console.log('new array');
+  console.table(arrayConcat);
+}
+
+//testing concat with strings
+
+function stringConc(){
+  const a = 'a';
+  console.log(a);
+  const b = 'b';
+  console.log('attempting concat');
+ console.log(a.concat(b));
+ console.table(a);
+ console.table(a.concat(b));
+
 }

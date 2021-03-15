@@ -11,6 +11,31 @@
 		iqTest("") → 0 // there are no numbers in the given set
         iqTest("2 2 4 6") → 0 // all numbers are even, therefore there is no position of an odd number
 */
+function iqTest(str){
+    result = 0;
+    iqArr = str.split(' ');
+    if (iqArr.length > 1){
+        numOdd = 0;
+        numEven = 0;
+        for (int of iqArr){
+            if (int % 2 == 0){
+                numEven++;
+                posEven = iqArr.indexOf(int);
+            } else {
+                numOdd++;
+                posOdd = iqArr.indexOf(int);
+            }
+        }
+        if (numOdd == 1){
+            result = posOdd + 1;
+        }
+        if (numEven == 1){
+            result = posEven + 1;
+        }
+
+    }
+    return result;
+}
 
 /*
 2. **titleCase** Write a function that will convert a string into title case, given an optional 
@@ -28,3 +53,74 @@ argument is unused.
 		titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
+
+
+function titleCase(str, list){
+    resultString = str.split(' ');
+    realResultString = "";
+    exceptions = [];
+    
+    if (list != undefined){
+        list = list.toLowerCase();
+        exceptions = list.split(' ');
+
+    }
+
+    for (word of resultString){
+        firstChar = word.substring(0,1);
+        firstChar = firstChar.toUpperCase();
+        word = firstChar + word.substring(1).toLowerCase();
+        realResultString += word + " ";
+    
+    }
+    i = 0;
+    realResultString = realResultString.split(' ');
+    for (word of realResultString){
+        if (exceptions.includes(word)){
+            word = word.toLowerCase();
+        }
+        i++;
+    }
+
+
+realRealResultString = "";
+i = 0;
+for (word of realResultString){
+    if (!exceptions.includes(word.toLowerCase()) || i==0 && !exceptions.includes(word)){
+        realRealResultString += word;
+    } else {
+        realRealResultString += word.toLowerCase();
+    }
+   
+    if (i != realResultString.length){
+        realRealResultString += " ";
+    }
+    i++;
+}
+
+realRealResultString = realRealResultString.trim();
+return realRealResultString;
+}
+
+//the better way that I didn't actually come up with
+function titleCase(str, exceptions) {
+    let titleWords = str.split( ' ' );
+    titleWords[0] = titleWords[0].charAt(0).toUpperCase() + titleWords[0].substr(1).toLowerCase();
+    for(i = 1; i < titleWords.length; i++) {
+        if(typeof exceptions !== 'undefined' && wordIsArticle(titleWords[i], exceptions.split(' '))) {
+            titleWords[i] = titleWords[i].toLowerCase();
+        }
+        else {
+            titleWords[i] = titleWords[i].charAt(0).toUpperCase() + titleWords[i].substr(1).toLowerCase();
+        }
+    }
+    return titleWords.join(' ');
+}
+function wordIsArticle(w, a) {
+    for(x = 0; x < a.length; x ++ ) {
+        if(w.toLowerCase() === a[x].toLowerCase()) {
+            return true;
+        }
+    }
+    return false;
+}
