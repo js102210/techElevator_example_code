@@ -54,52 +54,6 @@ argument is unused.
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
 
-/*
-function titleCase(str, list){
-    resultString = str.split(' ');
-    realResultString = "";
-    exceptions = [];
-    
-    if (list != undefined){
-        list = list.toLowerCase();
-        exceptions = list.split(' ');
-    }
-
-    for (word of resultString){
-        firstChar = word.substring(0,1);
-        firstChar = firstChar.toUpperCase();
-        word = firstChar + word.substring(1).toLowerCase();
-        realResultString += word + " ";
-    
-    }
-    i = 0;
-    realResultString = realResultString.split(' ');
-    for (word of realResultString){
-        if (exceptions.includes(word)){
-            word = word.toLowerCase();
-        }
-        i++;
-    }
-
-
-realRealResultString = "";
-i = 0;
-for (word of realResultString){
-    if (!exceptions.includes(word.toLowerCase()) || i==0 && !exceptions.includes(word)){
-        realRealResultString += word;
-    } else {
-        realRealResultString += word.toLowerCase();
-    }
-   
-    if (i != realResultString.length){
-        realRealResultString += " ";
-    }
-    i++;
-}
-
-realRealResultString = realRealResultString.trim();
-return realRealResultString;
-} */
 
 function titleCase (str, list){
     str = str.toLowerCase();
@@ -124,28 +78,3 @@ function casing (str){
 }
 
 
-
-
-/*
-//the better way that I didn't actually come up with
-function titleCase(str, exceptions) {
-    let titleWords = str.split( ' ' );
-    titleWords[0] = titleWords[0].charAt(0).toUpperCase() + titleWords[0].substr(1).toLowerCase();
-    for(i = 1; i < titleWords.length; i++) {
-        if(typeof exceptions !== 'undefined' && wordIsArticle(titleWords[i], exceptions.split(' '))) {
-            titleWords[i] = titleWords[i].toLowerCase();
-        }
-        else {
-            titleWords[i] = titleWords[i].charAt(0).toUpperCase() + titleWords[i].substr(1).toLowerCase();
-        }
-    }
-    return titleWords.join(' ');
-}
-function wordIsArticle(w, a) {
-    for(x = 0; x < a.length; x ++ ) {
-        if(w.toLowerCase() === a[x].toLowerCase()) {
-            return true;
-        }
-    }
-    return false;
-} */

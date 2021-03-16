@@ -27,7 +27,9 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
-
+ function multiplyTogether (num1, num2){
+   return num1*num2;
+ }
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -38,7 +40,9 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
-
+function multiplyNoUndefined(num1 = 0, num2 = 0){
+  return num1*num2;
+}
 
  
 /**
@@ -86,6 +90,14 @@ function scopeTest() {
     console.log("This won't print!");
   }
 }
+/**
+ * takes some details about a person and prints a describing sentence
+ * @param {string} name the name of the person we are describing
+ * @param {number} age the age of the person 
+ * @param {string[]} listOfQuirks list of the person's quirks 
+ * @param {string} separator string to separate the quirks by (, is default) 
+ * @returns {string} funny sentence about the person
+ */
 
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
@@ -100,7 +112,7 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce((acc, current) => acc + current, /* initial value for accumulator (optional)*/ 0);
 }
 
 /**
@@ -111,4 +123,86 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+  return numbersToFilter.filter((num) => num % 3 == 0 );
+}
+
+//if more than one line in filter logic
+function allDivisibleByThree(numbersToFilter) {
+  return numbersToFilter.filter((num) => { 
+    if(num % 3 == 0){
+      console.log(num)}
+    return num % 3 == 0} );
+}
+
+function allDivisibleByThreeUsingNonAnon(numbersToFilter){
+  return numbersToFilter.filter(isDivisibleByThree);
+}
+
+function isDivisibleByThree(num){
+  return num%3 === 0;
+}
+
+/**
+ * for each element in the array, print it on a new line with index
+ * @param {[]} arr array
+ */
+
+function demoForEach(arr){
+  arr.forEach((item, index) => {
+    console.log('Item at index ' + index+ ' is ' + item);
+  });
+}
+
+
+/**
+ * Return a new array with all values doubled
+ * @param {number[]} nums 
+ * @returns{number[] a new array with all elements from nums doubled} 
+ */
+function doubleAllArrayVals(nums){
+  return nums.map((num) => num * 2);
+}
+
+/**
+ * Return a new array with all values at even indices doubled
+ * @param {number[]} nums 
+ * @returns{number[] a new array with all elements at even indices from nums  doubled} 
+ */
+ function doubleAllArrayValsAtEvenIndices(nums){
+  return nums.map((num, index) => {
+    if (index % 2 == 0){
+     return num * 2}
+     return num;
+    });
+}
+
+/**
+ * 
+ * @param {string[]} students
+ * @returns {string} find student named dan and return it with its index 
+ */
+
+//not working?
+function findDan(students){
+  return students.find((student, index) => {
+    if (student == 'Dan'){
+     console.log( student + ' found at index ' + index)
+      return (student, index);
+    }
+  })
+}
+
+/**
+ * 
+ * @param {*} numbersToSum 
+ */
+
+function sumAllWithAnon (numbersToSum){
+  return numbersToSum.reduce(addNums, i);
+}
+
+function addNums (sum, number, index){
+  console.log('adding ' + sum + ' num')
+  return sum + num;
+}

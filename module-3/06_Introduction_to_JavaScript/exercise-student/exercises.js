@@ -7,13 +7,11 @@
 		sumDouble(2, 2) → 8 */
 
 		function sumDouble(x, y) {
-		let result;
+		let result = x + y;
 		if (x == y ){
 			result = (x + y) * 2;
-		} else {
-			result = x + y;
-		}
-			return result;
+		} 
+		return result;
         }
 
 
@@ -33,11 +31,7 @@
 			return result;
 		}
 		function hasTeen(intA, intB, intC){
-			result = false;
-			if (determineTeen(intA) || determineTeen(intB) || determineTeen(intC)){
-				result = true;
-			}
-			return result;
+			return (determineTeen(intA) || determineTeen(intB) || determineTeen(intC));
 		}
 
 /* 
@@ -50,10 +44,8 @@
 */
 		function lastDigit(intA, intB){
 			result = false;
-			arrA = Array.from(String(intA));
-			arrB = Array.from(String(intB));
-			lastA = arrA[arrA.length -1];
-			lastB = arrB[arrB.length-1];
+			lastA = intA.toString().split('').pop();
+			lastB = intB.toString().split('').pop();
 			if(lastA === lastB){
 				result = true;
 			}
