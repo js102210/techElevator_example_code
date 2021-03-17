@@ -112,9 +112,9 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce((acc, current) => acc + current, /* initial value for accumulator (optional)*/ 0);
+  return numbersToSum.reduce((acc, current) => acc + current, 0);
 }
-
+ /* initial value for accumulator (optional)*/
 /**
  * Takes an array and returns a new array of only numbers that are
  * multiples of 3
