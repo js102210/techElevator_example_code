@@ -5,7 +5,9 @@ import com.techelevator.city.CityDAO;
 import com.techelevator.city.JDBCCityDAO;
 import org.apache.commons.dbcp2.BasicDataSource;
 
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class DAOExample {
 
@@ -49,5 +51,6 @@ public class DAOExample {
 		//delete smallville aka theCity
 		dao.delete(theCity.getId());
 	}
+
 
 }

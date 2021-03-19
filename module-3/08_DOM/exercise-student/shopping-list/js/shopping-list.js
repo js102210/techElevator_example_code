@@ -30,6 +30,16 @@ function displayGroceries() {
 
 }
 
+function displayGroceries() {
+  const groceryList = document.getElementById('groceries');
+  groceries.forEach(grocery => {
+    const listItem = document.createElement('li');
+    listItem.innerText = grocery;
+    groceryList.appendChild(listItem);
+  });
+}
+
+
 /**
  * This function will be called when the button is clicked. You will need to get a reference
  * to every list item and add the class completed to each one
@@ -37,7 +47,6 @@ function displayGroceries() {
 function markCompleted() {
   groceryList = document.getElementById('groceries');
   groceryListItems = groceryList.getElementsByTagName('li');
-  
   for (let i = 0; i < groceryListItems.length; i++){
     item = groceryListItems[i];
     item.classList.add('completed');

@@ -59,13 +59,47 @@ function displayReview(review) {
 }
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
-
-// set the product reviews page title
+document.addEventListener('DOMContentLoaded', () => {
+  // set the product reviews page title
 setPageTitle();
 // set the product reviews page description
 setPageDescription();
 // display all of the product reviews on our page
 displayReviews();
+
+//if the user clicks the description call toggleDescriptionEdit
+const desc = document.querySelector('.description');
+desc.addEventListener('click', (event) =>
+toggleDescriptionEdit(event.target));
+
+//if user clicks enter or escape in text box save if needed, change display back either way
+const inputDesc = document.getElementById('inputDesc');
+inputDesc.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter'){
+    exitDescriptionEdit(event.target, true);
+  } 
+  if (event.key === 'Escape'){
+    exitDescriptionEdit(event.target, false);
+  }
+});
+
+//if user moves mouse outside of text field it should exit edit without saving
+inputDesc.addEventListener('mouseleave', (event) => {
+  exitDescriptionEdit(event.target, false);
+});
+
+//if the user clicks on the button to toggle the form call showHideForm
+const btnToggleForm = document.getElementById('btnToggleForm');
+btnToggleForm.addEventListener('click', showHideForm);
+
+//if user clicks save review, save the review
+const btnSaveReview = document.getElementById('btnSaveReview');
+btnSaveReview.addEventListener('click', (event) => {
+  event.preventDefault();
+  saveReview();
+});
+
+});
 
 /**
  * Take an event on the description and swap out the description for a text box.
@@ -74,7 +108,7 @@ displayReviews();
  */
 function toggleDescriptionEdit(desc) {
   const textBox = desc.nextElementSibling;
-  textBox.value = description;
+  textBox.value = desc.innerText;
   textBox.classList.remove('d-none');
   desc.classList.add('d-none');
   textBox.focus();
@@ -130,4 +164,24 @@ function resetFormValues() {
 /**
  * I will save the review that was added using the add review from
  */
-function saveReview() {}
+function saveReview() { 
+//create review object based on fields in form
+const name = document.getElementById('name').value;
+const title = document.getElementById('title').value;
+const rating = document.getElementById('rating').value;
+const review = document.getElementById('review').value;
+
+const newReview = {
+  reviewer: name,
+  title: title,
+  rating: rating,
+  review: review
+}
+
+// add new review object to reviews[]
+reviews.push(newReview);
+// call displayReview and pass in the new review as a parameter
+displayReview(newReview);
+//stop showing the form - call showHideForm
+showHideForm();
+}

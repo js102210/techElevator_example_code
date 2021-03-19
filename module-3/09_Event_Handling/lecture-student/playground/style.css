@@ -1,3 +1,11 @@
 div {
     border: 2px solid black;
 }
+
+.maketextcolor {
+    color: goldenrod;
+}
+
+.greenBackground{
+    background-color: green;
+}
