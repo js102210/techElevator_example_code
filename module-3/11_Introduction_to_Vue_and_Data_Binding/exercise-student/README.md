@@ -14,7 +14,7 @@ There are unit tests located in `/tests/unit/UserList.spec.js` that you can run 
 
 ## Step Three: Display users
 
-If you look in the `data()` function in `UserList.vue`, you'll see an array of users with some different properties. Your first task is to iterate over the array of users and display each property of the user in the appropriate column. There are six users in the array, so you'll end up with six table rows (tr) of data.
+If you look in the `data()` function in `UserList.vue`, you'll see an array of users with some different properties. Your first task is to iterate over the array of users and display each propnperty of the user in the appropriate column. There are six users in the array, so you'll end up with six table rows (tr) of data.
 
 > When you've completed this task, you'll see the user information in the UI. 1 of 15 tests now pass.
 

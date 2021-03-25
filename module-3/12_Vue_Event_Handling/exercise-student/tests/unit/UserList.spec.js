@@ -238,13 +238,13 @@ describe("UserList.vue", () => {
   describe("Select All Actions", () => {
 
     it('select all should select all users', () => {
-      const selAll = wrapper.findAll("#selectAll");
+      const selAll = wrapper.findAll("#setChecked");
       selAll.at(0).setChecked();
       wrapper.vm.selectedUserIDs.length.should.equal(users.length);
     })
 
     it('select all should de-select all users if selected', () => {
-      const selAll = wrapper.findAll("#selectAll");
+      const selAll = wrapper.findAll("#setChecked");
       selAll.at(0).setChecked(true);
       wrapper.vm.selectedUserIDs.length.should.equal(users.length);
       selAll.at(0).setChecked(false); //click twice

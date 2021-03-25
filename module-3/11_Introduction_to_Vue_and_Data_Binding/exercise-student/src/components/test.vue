@@ -1,5 +1,3 @@
-
-
 <template>
   <table id="tblUsers">
     <thead>
@@ -65,13 +63,13 @@ export default {
       let filterLastName = filterObject.lastName;
       let filterUsername = filterObject.username;
       let filterEmail = filterObject.emailAddress;
-   
+      let filterStatus = filterObject.status;
       return this.users.filter((user) =>{
         return user.firstName.toLowerCase().includes(filterFirstName.toLowerCase())&&
         user.lastName.toLowerCase().includes(filterLastName.toLowerCase())&&
         user.username.toLowerCase().includes(filterUsername.toLowerCase())&&
         user.emailAddress.toLowerCase().includes(filterEmail.toLowerCase())&&
-        user.status.includes(filterObject.status);
+        user.status.includes(filterStatus);
       })
     }
   }

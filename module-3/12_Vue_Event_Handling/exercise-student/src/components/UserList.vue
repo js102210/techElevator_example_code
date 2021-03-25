@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-on:click="setChecked()" v-model="selectedUserIdsFull"/>
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +44,7 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-on:click="selectUserIDs(user.id)" v-model="selectedUserIDs"/>
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -52,36 +52,36 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <button class="btnEnableDisable" v-on:click.prevent="flipStatus(user.id)">{{statusToggleTexts[user.status]}}</button>
           </td>
         </tr>
       </tbody>
     </table>
 
-    <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button>Delete Users</button>
+    <div class="all-actions" >
+      <button :disabled='actionButtonDisabled == true'  v-on:click="enableSelectedUsers()">Enable Users</button>
+      <button  :disabled='actionButtonDisabled == true' v-on:click="disableSelectedUsers()">Disable Users</button>
+      <button :disabled='actionButtonDisabled == true' v-on:click="deleteSelectedUsers()">Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click="showForm = !showForm">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-on:submit.prevent="saveUser" v-show="showForm == true">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input type="text" name="firstName" v-model="newUser.firstName" />
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input type="text" name="lastName" v-model="newUser.lastName"/>
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <input type="text" name="username" v-model="newUser.username" />
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <input type="text" name="emailAddress" v-model="newUser.emailAddress"/>
       </div>
       <button type="submit" class="btn save">Save User</button>
     </form>
@@ -107,6 +107,11 @@ export default {
         username: "",
         emailAddress: "",
         status: "Active"
+      },
+      showForm : false,
+      statusToggleTexts: {
+        Active : "Disable",
+        Disabled : "Enable"
       },
       users: [
         {
@@ -157,10 +162,101 @@ export default {
           emailAddress: "msmith@foo.com",
           status: "Disabled"
         }
-      ]
+      ],
+      selectedUserIDs : []
     };
   },
-  methods: {},
+  methods: {
+    /**
+     * sets the newUser field back to its default properties and hides the createUser form
+     */
+    clearForm(){
+      this.newUser = {
+        id: null,
+        firstName: "",
+        lastName: "",
+        username: "",
+        emailAddress: "",
+        status: "Active"
+      };
+      this.showForm = false;
+    },
+    /**
+     * saves a new user and assigns it the next available id number, then calls clearForm()
+     */
+    saveUser(){
+      let nextId = this.users[this.users.length - 1].id + 1;
+      this.newUser.id = nextId;
+      this.users.push(this.newUser);
+      this.clearForm();
+    },
+    /**
+     * changes the users status to disabled if it's active and vice versa
+     * @param {number }id of the user whose status should change 
+     */
+    flipStatus(id){
+      if(this.users[id - 1].status == "Active"){
+        this.users[id - 1].status = "Disabled";
+      }else {
+        this.users[id - 1].status = "Active";
+      }
+    },
+    /**
+     * adds id of one user to the selectedUserIDs array, or removes it if it's already there
+     * @param {number} usserID to select 
+     */
+    selectUserIDs(id){
+
+      if (this.selectedUserIDs.includes(id)){
+        const index =  this.selectedUserIDs.indexOf(id);
+        this.selectedUserIDs.splice(index, 1);
+      }else{
+        this.selectedUserIDs.push(id);
+      } 
+  },
+  /**
+   * sets all selected users to enabled status then clears selected users array
+   */
+  enableSelectedUsers(){
+    this.selectedUserIDs.forEach((id) => this.users[id-1].status = "Active");
+    this.selectedUserIDs = [];
+  },
+  /**
+   * sets all selected users to disabled status then clears selected users array
+   */
+
+  disableSelectedUsers(){
+    this.selectedUserIDs.forEach((id) => this.users[id-1].status = "Disabled");
+    this.selectedUserIDs = [];
+  },
+/**
+ * deletes selected users from users array then clears selected users array
+ */
+  deleteSelectedUsers(){
+    this.selectedUserIDs.forEach((id) => {
+      this.users.forEach((user) => {
+        if (user.id == id){
+          this.users.splice(this.users.indexOf(user), 1);
+        }
+      })
+    });
+    this.selectedUserIDs = [];
+  },
+/**
+ * adds all existing user ids to the selected users array if it is not full, otherwise, it removes all of them from it
+ */
+  setChecked(){
+    if (this.selectedUserIDs.length == this.users.length){
+      this.selectedUserIDs = [];
+    } else {
+      this.selectedUserIDs = [];
+      this.users.forEach((user) => {
+      this.selectedUserIDs.push(user.id);
+      })
+    }
+  }
+  },
+  
   computed: {
     filteredList() {
       let filteredUsers = this.users;
@@ -198,9 +294,29 @@ export default {
         );
       }
       return filteredUsers;
+    },
+    actionButtonDisabled(){
+      return this.selectedUserIDs.length == 0;
+    },
+    selectedUserIdsContains : {
+      get : function(id){
+        return this.selectedUserIDs.includes(id);
+      },
+      set : function(id){
+        return this.selectedUserIDs.includes(id);
+      }
+    },
+    selectedUserIdsFull: {
+     get : function() {
+       return this.selectedUserIDs.length == this.users.length;
+    },
+    set : function(){
+     return this.selectedUserIDs.length == this.users.length;
     }
-  }
-};
+
+  },
+}
+}
 </script>
 
 <style scoped>
@@ -246,3 +362,4 @@ button {
   float: right;
 }
 </style>
+}

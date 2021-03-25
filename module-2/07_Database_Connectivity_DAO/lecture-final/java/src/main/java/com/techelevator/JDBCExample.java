@@ -6,13 +6,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
 public class JDBCExample {
 
 	public static void main(String[] args) throws SQLException {
-		
+
+
 		/* This datasource will be used for creating connections to the database.
 		 * Below, we provide the information required to make database connections */
 		BasicDataSource dataSource = new BasicDataSource();
@@ -118,5 +121,6 @@ public class JDBCExample {
 		insertActorStmt.executeUpdate();
 		
 		conn.commit();
+
 	}
 }
