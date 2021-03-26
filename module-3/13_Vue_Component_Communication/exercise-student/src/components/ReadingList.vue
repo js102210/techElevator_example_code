@@ -1,13 +1,21 @@
 <template>
   <div class="book-container">
-
+    <book-card v-for="book in listOfBooks" v-bind:key="book.isbn" v-bind:book="book"/>
   </div>
 </template>
 
 <script>
+import BookCard from "./BookCard";
 
 export default {
-    name: 'reading-list'
+  components: { BookCard },
+
+    name: 'reading-list',
+    computed: {
+      listOfBooks(){
+        return this.$store.state.books;
+    }
+}
 }
 </script>
 
