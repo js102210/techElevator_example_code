@@ -1,8 +1,5 @@
 package com.techelevator.services;
 
-import com.techelevator.models.City;
-import com.techelevator.models.Hotel;
-import com.techelevator.models.Review;
 import org.springframework.web.client.RestTemplate;
 
 public class HotelService {

@@ -1,4 +1,4 @@
-package com.techelevator.models;
+package com.techelevator.services;
 
 public class Review {
     private int hotelID;

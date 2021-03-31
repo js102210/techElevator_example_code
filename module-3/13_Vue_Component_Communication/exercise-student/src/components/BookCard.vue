@@ -6,7 +6,8 @@
 
     <h3 class="book-author">{{book.author}}</h3>
     <button type="button" v-on:click="onReadStatusChange" 
-    v-bind:class="[book.read ? 'mark-unread' : 'mark-read']">{{toggleReadButtonText[book.read]}}
+    v-bind:class="[book.read ? 'mark-unread' : 'mark-read']">
+    {{toggleReadButtonText[book.read]}}
     </button>
   </div>
 </template>

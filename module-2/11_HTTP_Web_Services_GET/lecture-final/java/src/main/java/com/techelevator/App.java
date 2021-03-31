@@ -1,6 +1,6 @@
 package com.techelevator;
 
-import com.techelevator.models.Hotel;
+import com.techelevator.services.Hotel;
 import com.techelevator.services.ConsoleService;
 import com.techelevator.services.HotelService;
 

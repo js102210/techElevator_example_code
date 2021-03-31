@@ -1,8 +1,5 @@
 package com.techelevator.services;
 
-import com.techelevator.models.Hotel;
-import com.techelevator.models.Review;
-
 import java.util.Scanner;
 
 public class ConsoleService {
