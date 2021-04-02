@@ -59,7 +59,32 @@ export default {
       });
     },
     saveNewBoard() {
+      this.isLoading = true;
+      boardsService.addBoard(this.newBoard)
+      .then(response=>{
+        if (response.status === 201){
+          this.retrieveBoards();
+          this.showAddBoard = false;
+          this.newBoard = {
+            title: '',
+          backgroundColor: this.randomBackgroundColor()
+          };
+          
+        }
+        this.isLoading = false;
+      })
+      .catch(error=>{
+        if (error.response){
+          this.errorMsg = "Error adding new board. Response was " + error.response.statusText;
+        } else if (error.request){
+          this.errorMsg = "Error adding new board. Unreachable server."
+        } else {
+          this.errorMsg = "ope!"
+        }
+        this.isLoading = false;
+      });
 
+      
     },
     randomBackgroundColor() {
       return "#" + this.generateHexCode();

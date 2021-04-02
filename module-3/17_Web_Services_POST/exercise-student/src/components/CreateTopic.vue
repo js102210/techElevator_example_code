@@ -24,7 +24,21 @@ export default {
     };
   },
   methods: {
-    saveTopic() {}
+    saveTopic() {
+      const newTopic = {
+        id: this.topic.id,
+        title : this.topic.title
+      };
+
+      topicService.addTopic(newTopic)
+      .then(response => {
+        if (response.status == 201) {
+          this.$router.push('/');
+        }
+      }).catch(error => {
+        alert('There was a problem adding the topic');
+      })
+    }
   }
 };
 </script>

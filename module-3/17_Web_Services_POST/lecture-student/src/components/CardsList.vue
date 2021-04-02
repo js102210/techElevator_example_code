@@ -67,7 +67,24 @@ export default {
         });
     },
     deleteBoard() {
-      
+      if (confirm("Deleting this board is permanent and will have consequeces later. You should save if you haven't already. Continue?")){
+        boardsService.deleteBoard(this.boardId)
+        .then(response =>{
+          if (response.status === 200){
+            alert("Board deleted, hope you saved!");
+            this.$store.commit("DELETE_BOARD", this.boardId);
+            this.$router.push('/');
+          }
+        })
+        .catch(error=>{if (error.response){
+          this.errorMsg = error.response.statusText;
+        } else if (error.request){
+          this.errorMsg = "Could not reach server";
+        }else {
+          this.errorMsg = "ope!";
+        }
+        });
+      }
     }
   },
   created() {
