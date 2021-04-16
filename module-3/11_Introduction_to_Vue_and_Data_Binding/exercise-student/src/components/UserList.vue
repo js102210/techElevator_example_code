@@ -60,6 +60,7 @@ export default {
   },
   computed: {
     filteredList(){
+      
       const filterObject = this.filter;
       let filterFirstName = filterObject.firstName;
       let filterLastName = filterObject.lastName;
